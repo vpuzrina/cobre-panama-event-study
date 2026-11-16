@@ -1,0 +1,17 @@
+ticker_yahoo,company,group,exchange,currency,benchmark_index_yahoo,why_included,notes,latam_share,latam_source
+FM.TO,First Quantum Minerals,owner,TSX,CAD,^GSPTSE,Owns and operates Cobre Panama (~40% of group revenue before closure),Main treatment firm,,
+FNV.TO,Franco-Nevada,stream holder,TSX,CAD,^GSPTSE,Holds a precious-metals stream on Cobre Panama (~20.5% of 2023 GEOs),Also trades as FNV on NYSE,,
+FCX,Freeport-McMoRan,rival miner,NYSE,USD,^GSPC,Largest listed copper miner,LatAm split decided by share of copper output from LatAm (>50%) - fill latam_share from annual report,0.29,"FY2023 10-K: consolidated copper production 29% South America (Cerro Verde, El Abra), 32% North America, 39% Indonesia"
+SCCO,Southern Copper,rival miner,NYSE,USD,^GSPC,Pure copper exposure (Peru/Mexico),,1.00,All mines in Peru and Mexico (FY2023 10-K)
+ANTO.L,Antofagasta,rival miner,LSE,GBp (pence),^FTSE,Chilean pure-play copper miner,Prices in pence; returns are unit-free,1.00,All copper mines in Chile
+TECK,Teck Resources,rival miner,NYSE,USD,^GSPC,Large Canadian copper miner,Anglo American merger: keep for 2023 events only if 2026 data is missing,0.67,FY2023 MD&A: Antamina 95 + Carmen de Andacollo 39.5 + Quebrada Blanca 62.7 of 296.5 kt
+LUN.TO,Lundin Mining,rival miner,TSX,CAD,^GSPTSE,Mid-cap copper miner,,0.96,"2023 production: Candelaria 335.1 + Caserones 307.6 + Chapada 100.8 of 773.5 Mlb (mine-level, 100% basis)"
+HBM.TO,Hudbay Minerals,rival miner,TSX,CAD,^GSPTSE,Mid-cap copper miner (Americas),,0.76,"FY2023 results: Peru 100,487 of 131,691 t contained copper"
+IVN.TO,Ivanhoe Mines,rival miner,TSX,CAD,^GSPTSE,Fast-growing copper producer (DRC),,0.00,"Kamoa-Kakula, DRC"
+NDA.DE,Aurubis,merchant smelter,XETRA,EUR,^GDAXI,Europe's largest copper smelter,,,
+5711.T,Mitsubishi Materials,merchant smelter,Tokyo,JPY,^N225,Major Japanese copper smelter,,,
+000630.SZ,Tongling Nonferrous,merchant smelter,Shenzhen,CNY,399001.SZ,Large Chinese smelter,Keep only if download_log.csv shows clean data,,
+5713.T,Sumitomo Metal Mining,integrated smelter,Tokyo,JPY,^N225,Japanese smelter with mine stakes,,,
+0358.HK,Jiangxi Copper,excluded: owns ~18.5% of First Quantum,HKEX,HKD,^HSI,China's largest integrated copper producer,"Directly exposed through its FQM stake (Mining Weekly, 10 Nov 2023); kept in car_firm.csv, left out of group tests",,
+BOL.ST,Boliden,integrated smelter,Stockholm,SEK,^OMX,European miner and smelter,,,
+HG=F,COMEX copper futures (front month),commodity,COMEX,USD,,Daily copper price (second factor),Front-month rolls create jumps,,

@@ -1,0 +1,351 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+
+\captionsetup{font=small, labelfont=bf}
+\setstretch{1.15}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+\title{Pricing mine closure: Stock market reaction to closure of the Cobre Panamá mine, 2023--2026}
+\author{Varvara Puzrina\\ Boston University}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent I evaluate stock market performance during political and legal developments affecting the Panama Cobre Panamá mine for 2023--2026 for First Quantum Minerals, the parent company of Cobre Panamá, and other copper mining and related companies, including mine finance company Franco-Nevada and other copper miners and smelters. Using daily stock price data on 15 publicly traded firms and a copper market model, I estimate and test for abnormal returns associated with five major events using a single-firm quantile test, multiple-firm tests that control for a single event date, and a placebo test of 639 other days without news about Cobre Panamá. First Quantum had abnormal returns of $-$43.6\% over two days after a referendum announcement in October 2023, worth about US\$6.1 billion, and roughly 12\% more on each of the 2023 closure order and the September 2026 closure recommendation. Franco-Nevada had abnormal returns of $-$12.1\% on the referendum announcement, worth about US\$3.1 billion, well above the US\$1.17 billion it later wrote off. Other copper miners and smelters showed no significant abnormal returns in placebo tests. A limited number of events and firms makes it difficult to detect significant abnormal returns in this group of firms.
+\end{abstract}
+
+\section{Introduction}
+
+Late in 2023, Panama shut down a large copper mine, Cobre Panamá. In 2022, Cobre Panamá produced 350,000 metric tons of copper, or 1.5\% of global production, and contributed 40\% of its owner's revenue. Events related to the mine shutdown in 2023 included entering into a 20-year operating agreement with the mine and, within about a month, protests and a referendum announcement, as well as a Supreme Court ruling that the 20-year agreement was unconstitutional and a government decision to shut down the Cobre Panamá mine. Events in 2026 included an audit finding general regulatory compliance at the mine and a recommendation from a commission of government ministers to shut down the Cobre Panamá mine in an orderly fashion.
+
+The case involves a simple business analysis question: Who is harmed and who benefits if a government takes a large copper mine off the market? We know that the mine owner is harmed. Other copper industry participants may or may not be harmed. Competing copper mines may benefit from higher copper prices due to lower supply or be harmed by extra premiums placed on all nearby mines by investors concerned about political risk. Smelters may be harmed because they have less copper concentrate to process. Firms with streaming arrangements on the mine also share in the mine owner's losses.
+
+This paper studies firm responses using event study techniques \citep{mackinlay1997}. Abnormal returns for 15 public firms in response to five events are calculated. Appropriate statistical tests for a small number of common events affecting all sample firms are conducted. Five different model specifications and a placebo test are used to check the robustness of results. Financial implications of the main responses are compared with Franco-Nevada's write-off and arbitration claims by both companies against Panama.
+
+I found no event study papers on Cobre Panamá in searches of Google Scholar and SSRN on 29 October 2026. Relevant papers in other areas include those on copper prices during labor strikes in Chile \citep{fernandez2023} and the stock returns of parent companies when expropriation announcements are made \citep{restrepo2016}. The primary contributions of this paper are to describe and analyze the reactions of several firms in different segments of an industry's supply chain to a single political event and determine which reactions are statistically significant.
+
+\section{Background}
+
+Cobre Panamá is an open-pit copper mine developed and operated by Minera Panamá, a subsidiary of First Quantum Minerals. Commercial production started in 2019. Franco-Nevada has a precious metals streaming agreement with Cobre Panamá that represented about 20.5\% of Franco-Nevada's gold-equivalent ounces in 2023. Jiangxi Copper, China's largest copper producer, holds about 18.5\% of First Quantum Minerals.
+
+In October 2023, Panama's National Assembly passed Law 406, a new 20-year mining contract in Panama. Tax and environmental protests began against the mine within days of passage. Key events discussed in this paper, in chronological order, are described in Table~\ref{tab:events}. Day 0 is the first business day in Toronto when news events could have affected prices.
+
+\begin{table}[h]
+\centering
+\caption{Core events}
+\label{tab:events}
+\small
+\begin{tabularx}{\textwidth}{l l L l}
+\toprule
+ID & Day 0 & News & Role in the analysis \\
+\midrule
+E2 & 30 Oct 2023 & President announces a referendum on the contract (Sunday 29 Oct) & Core, bad news \\
+E3 & 2 Nov 2023 & Assembly drops the clause that would have revoked the contract & Core, good news \\
+E6 & 28 Nov 2023 & Supreme Court rules Law 406 unconstitutional during trading; the president orders closure after the close & Core, bad news \\
+F3 & 19 Jun 2026 & Government audit finds the mine broadly compliant & Core, good news \\
+F6 & 30 Sep 2026 & Ministerial commission recommends a restart only to fund an orderly closure & Core, bad news \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Five more events (port blockade and production cuts in November 2023; president's statements and S\&P announcement in 2026) are treated as exploratory. Information about Law 406 passing on 20 October 2023 appears in the text but is not coded as an event because good news and the first protests fall on the same days. An event on 29 July 2026 is not coded because it overlaps with a First Quantum earnings announcement.
+
+Two facts about the announcements relate to design issues. First, the E6 announcements for North American stocks were made on successive days, day 0 for the court ruling and day +1 for the closure order. For Asian stocks, the two E6 announcements were made on the same day. Second, the 2026 closure recommendation is mixed news because, on the same day, Reuters reported that the commission might propose a restart.
+
+\section{Data}
+
+The sample consists of 15 publicly traded companies in six categories (Table~\ref{tab:sample}). Other mining companies are classified by their share of copper production from Latin America in 2023 using data from company annual reports.
+
+\begin{table}[h]
+\centering
+\caption{Sample firms}
+\label{tab:sample}
+\small
+\begin{tabularx}{\textwidth}{l L L}
+\toprule
+Group & Firms & Why they are in the sample \\
+\midrule
+Owner & First Quantum (TSX) & Owns and operates the mine \\
+Stream holder & Franco-Nevada (TSX) & Holds a stream on the mine's gold and silver \\
+Rival miners, Latin America ($>$50\% of output) & Southern Copper, Antofagasta, Lundin, Hudbay, Teck & Could gain from tighter supply or lose from higher regional risk \\
+Rival miners, other & Freeport (29\% Latin America), Ivanhoe (DRC only) & Same, without regional exposure \\
+Merchant smelters & Aurubis, Mitsubishi Materials, Tongling Nonferrous & Buy concentrate; lower treatment charges hurt them \\
+Integrated smelters & Sumitomo Metal Mining, Boliden & Own mines as well as smelters \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Jiangxi Copper was included in the integrated smelter group. I excluded it from all group comparisons because Jiangxi Copper owns about 18.5\% of First Quantum Minerals and is affiliated with it, not a competitor.
+
+Daily closing stock prices for 15 firms and nine national stock indices, as well as daily prices for the MSCI ACWI ETF and COMEX copper futures first contract month, are collected from Yahoo Finance for August 2022 through October 2026. I am able to collect full data series for all 25 variables. I compute daily continuously compounded stock returns and drop observations for dates when either individual stock prices for firms or national stock prices are missing to account for national holidays.
+
+I confirmed the data in three ways. Daily returns for Freeport, Aurubis, and Jiangxi Copper on 30 October 2023 match those reported by Stooq, a different website, to within 0.01 percentage points. First Quantum's returns on 30 October 2023 and 30 September 2026 were $-$28.5\% and $-$15.3\%, respectively, consistent with news reports. Returns of 0\% on fewer than 2\% of trading days for the stocks in this analysis suggest that liquidity was not a problem.
+
+Event dates are based on news sources cited in the project's events file. I performed additional news searches for days 0 to gather information about other events related to the same firms. Other news searches resulted in changes to two event dates (E3 changed from 3 to 2 November 2023 and an exploratory event from 11 to 10 February 2026) and removal of eight firm-event pairs from the group tests, including Teck and event E4, following news the next day of a sale of Teck's coal business, and Antofagasta and event F6, following a vote by union workers at Centinela mine to authorize a strike.
+
+\section{Method}
+
+For each firm-event pair, I run a two-factor market model on trading days $-250$ to $-30$ before day 0 using firm-event data:
+\begin{equation}
+R_{it} = \alpha_i + \beta_i R_{mt} + \gamma_i R_{cu,t} + \varepsilon_{it},
+\end{equation}
+where $R_{mt}$ is the home-market return for the firm, and $R_{cu,t}$ is the copper futures return. Copper prices are relevant for mining companies because copper prices and news related to Cobre Panamá usually moved on the same days; otherwise, changes in copper prices would be attributed to news related to Cobre Panamá. Days within five trading days of other Cobre Panamá events are dropped from the estimation sample. A typical firm-event analysis covers about 170 days.
+
+The abnormal return is the difference between an asset's return and the return predicted by a model. The cumulative abnormal return is the sum of abnormal returns calculated over a period. The main event window examined in this paper is $[0, +1]$. A two-day window is needed because European and Asian markets are usually closed when news from the Americas arrives and react on the next trading day. In addition to the standard two-day event window used for E6, I look at returns on days 0 and +1 for E6 separately and over the $[-5, +1]$ window to analyze a full week of related court activity.
+
+The tests are set up for an environment in which firms have few shared events.
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{Single firms.} In addition to conducting a $t$-test, I conduct the SQ test described by \citet{gelbach2013}, which compares the event CAR with other CARs of the same length observed during the estimation period. The SQ test does not assume normally distributed stock returns and is therefore suitable for analyzing single-day changes in stock prices of up to 30\%. With about 170 estimation days, the smallest possible two-sided $p$-value using the SQ test is approximately 0.01.
+\item \textbf{Groups.} When all companies share the same event date, abnormal returns for companies in each group are correlated, so cross-sectional $t$-tests are inappropriate. I construct equally weighted portfolios for each group with estimated residuals to account for within-group correlation and use the BMP test with the \citet{kolari2010} adjustment.
+\item \textbf{Placebo.} I conduct the same test on 639 randomly chosen dates that are not within 15 calendar days of an event to determine how many randomly chosen dates had a group CAR as large as that on the actual event date.
+\end{itemize}
+
+The hypotheses were developed before reviewing return data: significantly negative price reaction for First Quantum, smaller negative price reaction for Franco-Nevada, positive price reaction for non-Latin American competitors (supply shortage), weaker or negative price reaction for Latin American competitors (political risk in their region), and negative price reaction for merchant smelters.
+
+\section{Results}
+
+\subsection{First Quantum and Franco-Nevada}
+
+The owner's reaction is significant. First Quantum's share price fell 43.6\% more than the market and copper prices would predict in the two days after the referendum announcement. Abnormal returns on 30 and 31 October were $-$35\% and $-$22\%, respectively. After a further drop on 1 November, the share price moved sideways, indicating that the market absorbed the referendum news within three days or so (Figure~\ref{fig:car}).
+
+\begin{table}[h]
+\centering
+\caption{CARs for First Quantum and Franco-Nevada}
+\label{tab:fm}
+\small
+\begin{tabular}{l l r r r r}
+\toprule
+ & & \multicolumn{2}{c}{First Quantum} & \multicolumn{2}{c}{Franco-Nevada} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+Event & Window & CAR & SQ $p$ & CAR & SQ $p$ \\
+\midrule
+E2 referendum & $[0,+1]$ & $-43.6\%$ & 0.009 & $-12.1\%$ & 0.009 \\
+E3 Assembly reverses & $[0,+1]$ & $+7.8\%$ & 0.027 & $+0.1\%$ & 0.91 \\
+E6 ruling and closure order & $[0,+1]$ & $-12.1\%$ & 0.009 & $-2.7\%$ & 0.14 \\
+\quad E6 ruling only & $[0,0]$ & $-1.8\%$ & 0.33 & $+0.8\%$ & 0.50 \\
+\quad E6 closure order only & $[+1,+1]$ & $-10.6\%$ & 0.009 & $-3.5\%$ & 0.018 \\
+\quad E6 with week before & $[-5,+1]$ & $-21.9\%$ & 0.009 & $-3.8\%$ & 0.31 \\
+F3 audit & $[0,+1]$ & $-3.4\%$ & 0.20 & $+0.9\%$ & 0.59 \\
+F6 closure recommended & $[0,+1]$ & $-12.8\%$ & 0.012 & $-2.5\%$ & 0.25 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.3em}
+\parbox{0.92\textwidth}{\footnotesize CARs are expressed as percentages. The minimum SQ test $p$-value that can be shown in this example is 0.009, meaning the reported event was more extreme than every comparable period in the estimation window.}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\IfFileExists{figures/fig_car_fm_fnv.png}{\includegraphics[width=\textwidth]{figures/fig_car_fm_fnv.png}}{\fbox{Upload figures/fig\_car\_fm\_fnv.png}}
+\caption{Cumulative abnormal returns of First Quantum and Franco-Nevada from day $-5$ to day $+10$ around three key events. Market model with home index and copper, estimated on days $-250$ to $-30$.}
+\label{fig:car}
+\end{figure}
+
+The E6 rows in Table~\ref{tab:fm} provide the clearest evidence. The Supreme Court ruling barely moved the price of First Quantum shares ($-$1.8\%; not statistically significant), partly because the stock had already fallen through the week of court sessions. An announcement that night about the president's decision to close the mine led to another 10.6\% drop in the stock price the next day. Investors appear to have treated the Supreme Court ruling as expected and the closure announcement as new information.
+
+Franco-Nevada also experienced a smaller stock-price reaction to the same events. The referendum announcement was followed by a 12.1\% drop in Franco-Nevada's stock price, about one-fourth the reaction seen with First Quantum's stock price, reflecting Franco-Nevada's lower exposure to that asset, which accounted for about 20\% of Franco-Nevada's production and was one of several assets held by Franco-Nevada. The reactions to the 2023 shutdown order (3.5\% drop the next day) and 2026 recommendation (2.5\% drop) were minor and only the reaction to the shutdown order was statistically significant.
+
+\subsection{Rival miners and smelters}
+
+Evidence of spillover effects is weak. Averages of CARs in the main window for each group are reported in Table~\ref{tab:groups}.
+
+\begin{table}[h]
+\centering
+\caption{Mean group CARs, window $[0,+1]$}
+\label{tab:groups}
+\small
+\begin{tabular}{l r r r r}
+\toprule
+Event & \shortstack{Latin American\\rivals (5)} & \shortstack{Other\\rivals (2)} & \shortstack{Merchant\\smelters (3)} & \shortstack{Integrated\\smelters (2)} \\
+\midrule
+E2 referendum & $-2.9\%$ & $-3.8\%$ & $+0.3\%$ & $+0.7\%$ \\
+E3 Assembly reverses & $+0.2\%$ & $+0.8\%$ & $-1.4\%$ & $-2.5\%$ \\
+E6 ruling and closure order & $+1.7\%$ & $+0.8\%$ & $-0.6\%$ & $-1.6\%$ \\
+F3 audit & $-2.1\%$ & $+1.0\%$ & $-2.9\%$ & $-4.1\%$ \\
+F6 closure recommended & $-0.2\%$ & $-0.2\%$ & $-2.5\%$ & $-0.6\%$ \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.3em}
+\parbox{0.92\textwidth}{\footnotesize Group sizes are shown in parentheses. Lower firm counts for some events are due to exclusions. Group mean log CARs are close to percentage changes at these magnitudes. Group mean log CARs are not significantly different from zero at the 5\% level using the portfolio test.}
+\end{table}
+
+The referendum is the only event in which the companies showed similar patterns in their returns: seven rival mining companies had mean return declines of 2.9\% for Latin America and 3.8\% for other regions. If the similar return patterns are evidence of contagion as defined by \citet{lang1992}, where negative information about a firm causes investors to view other firms in the same industry as riskier, I would expect Latin American companies to have greater return declines than other companies. Latin American companies had smaller return declines. Ivanhoe, which does not have any mining operations in Latin America, had the greatest return decline ($-$5.7\%). The Kolari and Pynnönen test shows that the Latin American decline is statistically significant ($p = 0.02$), and the other two tests do not ($p = 0.12$ and $0.16$, respectively). Section~\ref{sec:robust} discusses arguments for giving more weight to the other two tests' results.
+
+I find no evidence that closure helped rival firms by raising copper prices, as measured by positive cumulative abnormal returns on negative-announcement days for rivals. Similarly, I find no significant abnormal returns by smelters on any of the core events. These results are consistent with industry reports that treatment and refining charges now make up a smaller share of smelters' revenues than sales of metal and by-products \citep{cru2026} and that lower treatment and refining charges are driven by excess capacity in Chinese smelters as much as by lost supply from Cobre Panamá.
+
+\subsection{Bad news and good news}
+
+For First Quantum, negative news events had a greater effect on stock prices than positive news. Stock prices declined by 43.6\%, 12.1\%, and 12.8\% after First Quantum's three negative news events. Stock prices rose by 7.8\% after the Assembly news event and were 3.4\% lower after the 2026 audit finding that the mine complied with laws in most respects. With only two positive news events, this pattern is worth noting but cannot be tested formally.
+
+\section{Robustness}
+\label{sec:robust}
+
+I re-ran the full-model analysis using four alternative specifications: without the copper factor; with the MSCI ACWI ETF instead of home-market indices; a shorter estimation window of days $-120$ to $-30$; and without dropping days near other events (Table~\ref{tab:robust}).
+
+\begin{table}[h]
+\centering
+\caption{First Quantum CAR in \%, window $[0,+1]$, across specifications}
+\label{tab:robust}
+\small
+\begin{tabular}{l r r r r r}
+\toprule
+Event & Main & No copper & World index & Short window & No buffer \\
+\midrule
+E2 referendum & $-43.6^{***}$ & $-43.8^{***}$ & $-44.1^{***}$ & $-43.4^{**}$ & $-43.6^{***}$ \\
+E3 Assembly reverses & $+7.8^{**}$ & $+5.7$ & $+11.6^{***}$ & $+9.1^{**}$ & $+7.8^{**}$ \\
+E6 ruling and closure order & $-12.1^{***}$ & $-11.9^{***}$ & $-11.5^{***}$ & $-12.1^{**}$ & $-12.1^{***}$ \\
+F6 closure recommended & $-12.8^{**}$ & $-12.9^{**}$ & $-13.7^{**}$ & $-12.1^{**}$ & $-12.8^{***}$ \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.3em}
+\parbox{0.92\textwidth}{\footnotesize CARs expressed as percentages; stars from the SQ test, $^{***}\,p<0.01$, $^{**}\,p<0.05$. A shorter period leaves fewer days on which to calculate the CAR and a larger minimum $p$-value for the shorter period.}
+\end{table}
+
+First Quantum's three negative-news reactions barely change across specifications. E3 rebound estimates vary substantially by measure and are statistically insignificant in the absence of a copper measure and rise to 11.6\% with a global composite measure, evidence of measure dependence. Referendum estimates for Franco-Nevada vary between $-$11.9\% and $-$12.2\%. Estimates for other competitors and smelters are not statistically significant at the 5\% level for any specification, except that one of five specifications (the short estimation window) for the ``other competitors'' group on E2 is statistically significant at the 5\% level; this group contains two firms.
+
+The placebo test is the most direct test. My test for each group involves comparing the event CAR to the empirical distribution of CARs on 639 other days (Table~\ref{tab:placebo} and Figure~\ref{fig:placebo}).
+
+\begin{table}[h]
+\centering
+\caption{Placebo test: real CAR versus 639 ordinary days}
+\label{tab:placebo}
+\small
+\begin{tabular}{l r r}
+\toprule
+Event and group & Real CAR & Share of ordinary days at least as extreme \\
+\midrule
+E2, First Quantum & $-57.3\%$ (log) & 0.2\% \\
+E6, First Quantum & $-12.9\%$ (log) & 0.9\% \\
+F6, First Quantum & $-13.8\%$ (log) & 0.8\% \\
+E2, Franco-Nevada & $-12.8\%$ (log) & 0.2\% \\
+E3, First Quantum & $+7.5\%$ (log) & 4.8\% \\
+E2, Latin American rivals & $-2.9\%$ & 15.6\% \\
+E2, other rivals & $-3.8\%$ & 10.9\% \\
+F3, integrated smelters & $-4.1\%$ & 6.6\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\IfFileExists{figures/fig_placebo.png}{\includegraphics[width=\textwidth]{figures/fig_placebo.png}}{\fbox{Upload figures/fig\_placebo.png}}
+\caption{Distribution of group CARs over $[0,+1]$ on 639 random dates without Cobre Panamá news (grey), with the real events E2, E6 and F6 marked.}
+\label{fig:placebo}
+\end{figure}
+
+The owner's and the stream holder's losses are far outside of anything seen on ordinary days. The rivals' moves on the referendum are not: a move of that size occurs on roughly one ordinary day in seven to ten. That is why I do not treat the Kolari and Pynnönen result from Section 5.2 as evidence of contagion. With five firms and a residual correlation of about 0.33, that test relies on a cross-sectional standard deviation estimated from very few points, and the portfolio and placebo tests fit better for a group this small.
+
+One result disappeared during the checking. Before correcting E3's date from 3 to 2 November, Latin American rivals displayed a $-$2.4\% CAR. This occurred on the Assembly's reversal, and it was hard to explain. With the correct date, the figure is calculated to be +0.2\%. It was a specific timing error. It was not a relevant finding.
+
+\section{What the reaction is worth in dollars}
+
+Multiplying each CAR by the firm's market value on the day before the event results in turning percentages into dollars (Table~\ref{tab:dollars}). Market value equals shares outstanding multiplied by the closing price, converted at the USD/CAD rate of that day.
+
+\begin{table}[h]
+\centering
+\caption{Market value change in the main window, USD billion}
+\label{tab:dollars}
+\small
+\begin{tabular}{l r r}
+\toprule
+Event & First Quantum & Franco-Nevada \\
+\midrule
+E2 referendum & $-6.1$ & $-3.1$ \\
+E3 Assembly reverses & $+0.6$ & $\approx 0$ \\
+E6 ruling and closure order & $-0.8$ & $-0.6$ (not significant) \\
+F6 closure recommended & $-3.4$ & $-1.2$ (not significant) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Franco-Nevada corporate financial data can be used to estimate the value of the Cobre Panamá stream. In the fourth quarter of 2023, Franco-Nevada fully impaired its Cobre Panamá stream by \$1,169.2 million. Franco-Nevada's market value fell by more than \$3.1 billion following the referendum announcement. These are two measures of the Cobre Panamá stream's value. Impairment measures the book value of a stream based on the original cost paid years ago by a company. Market value of a stream includes expected future cash flows. Cobre Panamá stream revenue in 2023 was \$248.9 million. A value of around \$3 billion appears plausible for a stream with this revenue and a long mine life, which suggests that the book value understates the stream's economic value.
+
+The arbitration claims are a second benchmark. First Quantum has arbitration claims worth around USD 20 billion, and Franco-Nevada has arbitration claims worth at least USD 5 billion. The arbitrations have been suspended. First Quantum has market losses from 2023 events of around USD 6.3 billion, or about 32 percent of its arbitration claims. This does not mean that First Quantum's claims are exaggerated. CAR studies measure shifts in investor expectations based on announcements. Pre- and post-event stock price data show information about investors' expectations that the company will be compensated in arbitration or resume operations at the mine. Event study results, such as those in this case, are an input to damages estimates, as discussed by \citet{dellepiane2011}, not a damages estimate on their own.
+
+Two comments on dollar figures. The share figures for First Quantum in 2026 come from documents filed in June 2025. These are the latest available figures for First Quantum. The Franco-Nevada price figures for 2023 are adjusted for dividends paid later, which lowers them, so the estimated Franco-Nevada market value in 2023, and the estimated loss for the company in 2023, are understated by a few percent.
+
+\section{Limitations}
+
+The main limitation of the study is the number of events. There are five events, three negative and two positive, and all firms experienced the same events. Comparisons among groups were made with very small samples of closely related firms, including some groups with just two or three firms. Claims that findings from comparisons with competitors and smelters did not reveal differences should not be interpreted as meaning that no differences are present, just that the study design was not able to detect any differences.
+
+Timing is the second limitation. Day 0 is based on announcement date. In some cases, time-of-day data are drawn from newspaper reports for some events rather than official sources. Day 0 errors of one day can lead to CARs near zero for some events, such as the E3 correction. The $[0, +1]$ window reduces the risk of small timing errors but prevents separation of events announced on consecutive days, which is why the E6 split is possible only for North American stocks.
+
+Third, the model includes a home market and a copper market control but no mining market control. Part of the unexpected move of copper miners outside Panama may show up in abnormal returns to other firms. Adding a mining market control would help address this issue, but many mining market indexes include First Quantum Minerals, so the event would be reflected in these indexes as well.
+
+Finally, the 2026 events happened while the mine was closed and processing some remaining ore. They measure changes in the expected odds of a restart, not the loss of an operating mine. The September 2026 recommendation had both pros and cons because part of the recommendation was to reopen the mine to fund mine closure.
+
+\section{Conclusion}
+
+The closure of Cobre Panamá mainly affected the firms with a direct claim on the mine. First Quantum's market value declined by nearly USD 6.1 billion in two days after the referendum announcement and continued to decline at later steps toward closure, including in September 2026, almost three years after the mine was closed. Franco-Nevada's loss from the referendum announcement was almost USD 3.1 billion, more than double its book loss for the mine.
+
+Beyond these two companies, the response of rival mining companies to the referendum announcement was no larger than on roughly 1 in 7 to 1 in 10 ordinary days. Stocks of copper smelting firms showed no response to the referendum. The loss of 1.5\% of world copper supply was too small to have a measurable effect on the stock prices of other firms in the industry, according to this study.
+
+Two general lessons from this research apply to other studies. Timing errors can produce false inferences, so researchers conducting similar studies should use media reports to confirm event dates for firms. Limited numbers of events and shared events among firms can produce differing results with different tests. One correction used in this study suggested contagion among firms that other tests did not support.
+
+% ---------------------------------------------------------------------------
+\begin{thebibliography}{99}
+\setlength{\itemsep}{0.2em}
+\small
+
+\bibitem[CRU(2026)]{cru2026}
+CRU (2026). The changing nature of copper smelter economics. \url{https://www.crugroup.com/en/communities/thought-leadership/2026/The-changing-nature-of-copper-smelter-economics/}
+
+\bibitem[Dellepiane(2011)]{dellepiane2011}
+Dellepiane, S. (2011). Event studies in investment treaty arbitration. \emph{Journal of International Arbitration}, 28(4).
+
+\bibitem[Fernandez et al.(2023)]{fernandez2023}
+Fernandez, V., Pastén-Henríquez, B., Tapia-Griñen, P. and Wagner, R. (2023). Commodity prices under the threat of operational disruptions: Labor strikes at copper mines. \emph{Journal of Commodity Markets}, 32.
+
+\bibitem[Gelbach et al.(2013)]{gelbach2013}
+Gelbach, J., Helland, E. and Klick, J. (2013). Valid inference in single-firm, single-event studies. \emph{American Law and Economics Review}, 15(2).
+
+\bibitem[Kolari and Pynnönen(2010)]{kolari2010}
+Kolari, J. and Pynnönen, S. (2010). Event study testing with cross-sectional correlation of abnormal returns. \emph{Review of Financial Studies}, 23(11).
+
+\bibitem[Lang and Stulz(1992)]{lang1992}
+Lang, L. and Stulz, R. (1992). Contagion and competitive intra-industry effects of bankruptcy announcements. \emph{Journal of Financial Economics}, 32(1).
+
+\bibitem[MacKinlay(1997)]{mackinlay1997}
+MacKinlay, A. C. (1997). Event studies in economics and finance. \emph{Journal of Economic Literature}, 35(1).
+
+\bibitem[Restrepo Ochoa and Peña(2016)]{restrepo2016}
+Restrepo Ochoa, D. C. and Peña, J. I. (2016). The impact of expropriations on the stock prices of the parent companies: Sell on the rumor, buy on the news? EAFIT working paper 15007.
+
+\end{thebibliography}
+
+\subsection*{Industry, company and data sources}
+\small
+\begin{itemize}[leftmargin=1.2em, itemsep=0.1em]
+\item Fastmarkets (2024). Copper concentrate TCs still negative: how?
+\item First Quantum Minerals. Q3 2023 and Q2 2025 financial statements (shares outstanding).
+\item Franco-Nevada. 2023 results and annual report on Form 40-F (impairment, stream revenue).
+\item Mining Weekly (2023). China's Jiangxi Copper boosts First Quantum stake after stock rout.
+\item Event dates: Bloomberg (2023), BNN Bloomberg (2023, 2026), Reuters via Yahoo Finance (2023), Mining.com (2023), La Prensa (2026).
+\item Prices: Yahoo Finance via the R package tidyquant, August 2022 to October 2026. Cross-check: Stooq.
+\item Copper output by country: 2023 annual reports and results releases of Freeport-McMoRan, Teck, Lundin Mining, Hudbay, Southern Copper.
+\item Code, event list, exclusions and decision log: project folder (to be published on GitHub).
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,9 @@
+ticker,event_id,day_minus_1,shares_millions,usdcad,shares_source,fx_source
+FM.TO,E2,2023-10-27,693.599,1.3875,"FQM Q3 2023 financial statements: 693,599 thousand shares at 30 Sep 2023",poundsterlinglive.com USD/CAD close 27 Oct 2023
+FM.TO,E3,2023-11-01,693.599,1.3854,"FQM Q3 2023 financial statements: 693,599 thousand shares at 30 Sep 2023",poundsterlinglive.com USD/CAD close 1 Nov 2023
+FM.TO,E6,2023-11-27,693.599,1.3616,"FQM Q3 2023 financial statements: 693,599 thousand shares at 30 Sep 2023",poundsterlinglive.com USD/CAD close 27 Nov 2023
+FM.TO,F6,2026-09-29,834.206,1.4190,"FQM Q2 2025 financial statements: 834,206 thousand shares at 30 Jun 2025 (latest exact figure found; Q2 2026 EPS consistent with ~830m)",poundsterlinglive.com USD/CAD close 29 Sep 2026
+FNV.TO,E2,2023-10-27,192,1.3875,Macrotrends: 192 million shares at 30 Sep 2023,poundsterlinglive.com USD/CAD close 27 Oct 2023
+FNV.TO,E3,2023-11-01,192,1.3854,Macrotrends: 192 million shares at 30 Sep 2023,poundsterlinglive.com USD/CAD close 1 Nov 2023
+FNV.TO,E6,2023-11-27,192,1.3616,Macrotrends: 192 million shares at 30 Sep 2023,poundsterlinglive.com USD/CAD close 27 Nov 2023
+FNV.TO,F6,2026-09-29,193,1.4190,Macrotrends: 193 million shares at 31 Dec 2024 (latest found),poundsterlinglive.com USD/CAD close 29 Sep 2026

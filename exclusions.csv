@@ -1,0 +1,9 @@
+ticker,event_id,reason
+LUN.TO,E3,Q3 2023 results released after the close on 2023-11-01 (hit day 0 = 2023-11-02)
+TECK,E4,Sale of steelmaking coal business (~US$9bn) announced 2023-11-14 (day +1)
+IVN.TO,F1,2025 production and 2026 guidance released 6:00 ET on day 0 (2026-01-15)
+HBM.TO,F1,Preliminary 2025 production released 2026-01-16 (day +1)
+FCX,F3,NYSE closed 2026-06-19 so day 0 = 06-22; day +1 (06-23) is a sector sell-off (copper -2.3%)
+SCCO,F3,NYSE closed 2026-06-19 so day 0 = 06-22; day +1 (06-23) is a sector sell-off (copper -2.3%)
+TECK,F3,NYSE closed 2026-06-19 so day 0 = 06-22; day +1 (06-23) is a sector sell-off (TECK -7.4%)
+ANTO.L,F6,Centinela unions voted to strike 2026-09-28; government mediation started 2026-09-30 (day 0)
